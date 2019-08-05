@@ -4,10 +4,8 @@ import keras.backend as K
 if K.backend() == 'tensorflow':
     import tensorflow as tf
 
-
 class RoiPoolingConv(Layer):
-    '''
-    ROI pooling layer for 2D inputs.
+    '''ROI pooling layer for 2D inputs.
     See Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition,
     K. He, X. Zhang, S. Ren, J. Sun
     # Arguments
@@ -26,7 +24,6 @@ class RoiPoolingConv(Layer):
         3D tensor with shape:
         `(1, num_rois, channels, pool_size, pool_size)`
     '''
-
     def __init__(self, pool_size, num_rois, **kwargs):
 
         self.dim_ordering = K.image_dim_ordering()
@@ -66,7 +63,7 @@ class RoiPoolingConv(Layer):
             y = rois[0, roi_idx, 1]
             w = rois[0, roi_idx, 2]
             h = rois[0, roi_idx, 3]
-
+            
             row_length = w / float(self.pool_size)
             col_length = h / float(self.pool_size)
 
@@ -90,7 +87,7 @@ class RoiPoolingConv(Layer):
 
                         x2 = x1 + K.maximum(1,x2-x1)
                         y2 = y1 + K.maximum(1,y2-y1)
-
+                        
                         new_shape = [input_shape[0], input_shape[1],
                                      y2 - y1, x2 - x1]
 

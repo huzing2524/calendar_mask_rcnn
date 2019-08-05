@@ -26,9 +26,9 @@ def get_data(input_path):
                 classes_count[class_name] += 1
 
             if class_name not in class_mapping:
-                if class_name == 'bg' and found_bg == False:
-                    print(
-                        'Found class name with special name bg. Will be treated as a background region (this is usually for hard negative mining).')
+                if class_name == 'bg' and not found_bg:
+                    print('Found class name with special name bg. Will be treated as a'
+                          ' background region (this is usually for hard negative mining).')
                     found_bg = True
                 class_mapping[class_name] = len(class_mapping)
 
@@ -47,7 +47,8 @@ def get_data(input_path):
                     all_imgs[filename]['imageset'] = 'test'
 
             all_imgs[filename]['bboxes'].append(
-                {'class': class_name, 'x1': int(x1), 'x2': int(x2), 'y1': int(y1), 'y2': int(y2)})
+                {'class': class_name, 'x1': int(float(x1)), 'x2': int(float(x2)), 'y1': int(float(y1)),
+                 'y2': int(float(y2))})
 
         all_data = []
         for key in all_imgs:
@@ -62,3 +63,4 @@ def get_data(input_path):
                 class_mapping[key_to_switch] = val_to_switch
 
         return all_data, classes_count, class_mapping
+

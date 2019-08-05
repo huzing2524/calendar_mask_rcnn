@@ -25,6 +25,7 @@ def train_kitti():
     # config for data argument
     cfg = config.Config()
 
+    cfg.num_epochs = 50
     cfg.use_horizontal_flips = True
     cfg.use_vertical_flips = True
     cfg.rot_90 = True
@@ -33,7 +34,7 @@ def train_kitti():
     # cfg.base_net_weights = '/content/drive/keras_frcnn/model/epoch_length_800.h5'
     # TODO: the only file should to be change for other data to train
     # cfg.model_path = './model/resnet50_weights_tf_dim_ordering_tf_kernels.h5'
-    # cfg.model_path = '/content/drive/keras_frcnn/model/epoch_length_1100.h5'
+    cfg.model_path = '/content/drive/keras_frcnn/model/calendar.h5'
     cfg.simple_label_file = "/content/drive/keras_frcnn/dataset/train/annotation.txt"
 
     all_images, classes_count, class_mapping = get_data(cfg.simple_label_file)

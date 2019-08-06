@@ -25,7 +25,7 @@ def train_kitti():
     # config for data argument
     cfg = config.Config()
 
-    cfg.num_epochs = 50
+    cfg.num_epochs = 30
     cfg.use_horizontal_flips = True
     cfg.use_vertical_flips = True
     cfg.rot_90 = True

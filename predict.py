@@ -133,7 +133,7 @@ def predict_single_image(img_path, model_rpn, model_classifier_only, cfg, class_
     print('Elapsed time = {}'.format(time.time() - st))
     cv2.namedWindow('image', cv2.WINDOW_NORMAL)
     cv2.imshow('image', img)
-    result_path = './results_images/{}.png'.format(os.path.basename(img_path).split('.')[0])
+    result_path = './result_images/{}.png'.format(os.path.basename(img_path).split('.')[0])
     print('result saved into ', result_path)
     cv2.imwrite(result_path, img)
     cv2.waitKey(0)
@@ -171,7 +171,7 @@ def predict(args_):
 
     model_classifier = Model([feature_map_input, roi_input], classifier)
 
-    cfg.model_path = '/home/huzing2524/Desktop/calendar_faster_rcnn/model/calendar_075.h5'
+    cfg.model_path = '/home/dsd/Desktop/calendar_faster_rcnn/model/calendar.h5'
     print('Loading weights from {}'.format(cfg.model_path))
     model_rpn.load_weights(cfg.model_path, by_name=True)
     model_classifier.load_weights(cfg.model_path, by_name=True)
@@ -193,7 +193,7 @@ def predict(args_):
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--path', '-p', default='/home/huzing2524/Desktop/calendar_faster_rcnn/dataset/sample.png', help='image path')
+    parser.add_argument('--path', '-p', default='/home/dsd/Desktop/calendar_faster_rcnn/dataset/train/sample.png', help='image path')
     return parser.parse_args()
 
 

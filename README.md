@@ -36,7 +36,7 @@ pip3 install -r requirements.txt
 ```
 
 ### Example
-![](dataset/sample_inference_2019-09-11 14:41:26.jpg)
+![](https://huzing2524.oss-cn-shenzhen.aliyuncs.com/my_files/sample_inference_2019-09-11.jpg)
 
 ### Notes
 - 首次启动代码，要加载 h5 文件，所以会很慢。
